@@ -52,7 +52,7 @@ class TodoListViewModel: NSObject, ObservableObject {
     }
     
     private func handleSuccessFetch(_ models: [TodoModel]) {
-        let filteredData = self.filterData(data: models, searchText: self.searchableText)
+        let filteredData = self.filterData(data: models, searchText: self.searchableText).sorted(by: {$0.creationDate > $1.creationDate})
         self.todoItems = filteredData
     }
     
