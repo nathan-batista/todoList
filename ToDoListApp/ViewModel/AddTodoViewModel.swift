@@ -22,6 +22,7 @@ class AddTodoViewModel: ObservableObject {
     }
     
     func create() {
+        guard self.todoName != "" else { return }
         let toSaveItem = ToSaveTodoModel(title: self.todoName, description: self.todoDescription)
         self.delegate?.didTapCreate(item: toSaveItem)
     }
