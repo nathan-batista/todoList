@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class TodoModel: Identifiable, Equatable, TodoItem {
+class TodoModel: Identifiable, Equatable, TodoItem, Codable {
     static func == (lhs: TodoModel, rhs: TodoModel) -> Bool {
         lhs.id == rhs.id
     }
@@ -17,25 +17,19 @@ class TodoModel: Identifiable, Equatable, TodoItem {
     var title: String = ""
     var todoDescription: String = ""
     var creationDate: Date = Date()
-}
-
-class TodoModelRealm: Object, ObjectKeyIdentifiable, TodoItem {
-    static func == (lhs: TodoModelRealm, rhs: TodoModelRealm) -> Bool {
-        lhs.id == rhs.id
+    
+    init(title: String = "",
+         todoDescription: String = "",
+         creationDate: Date = Date()) {
+        self.title = title
+        self.todoDescription = todoDescription
+        self.creationDate = creationDate
     }
     
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var title: String = ""
-    @Persisted var todoDescription: String = ""
-    @Persisted var creationDate: Date = Date()
-    
+    convenience init(toSaveModel: ToSaveTodoModel) {
+        self.init(title: toSaveModel.title, todoDescription: toSaveModel.description, creationDate: toSaveModel.creationDate)
+    }
 }
-
-//class TodoModelGroup: Object, ObjectKeyIdentifiable {
-//    @Persisted(primaryKey: true) var id: ObjectId
-//    @Persisted var items = RealmSwift.List<TodoModelRealm>()
-//
-//}
 
 class ToSaveTodoModel: Codable {
     var title = ""

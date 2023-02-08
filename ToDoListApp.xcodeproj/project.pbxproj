@@ -11,7 +11,6 @@
 		4B1C1FA0298D5054002B53A3 /* TodoListHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C1F9F298D5054002B53A3 /* TodoListHomeView.swift */; };
 		4B613A61298D9BD300F38639 /* MockTodoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B613A60298D9BD300F38639 /* MockTodoListRepository.swift */; };
 		4B613A63298DA62200F38639 /* TodoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B613A62298DA62200F38639 /* TodoDetailsView.swift */; };
-		4BA928A22991CFEF000B4B78 /* RealmTodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA928A12991CFEF000B4B78 /* RealmTodoRepository.swift */; };
 		4BAF9183298D32DA00D5A14D /* ToDoListAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAF9182298D32DA00D5A14D /* ToDoListAppApp.swift */; };
 		4BAF9187298D32DE00D5A14D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BAF9186298D32DE00D5A14D /* Assets.xcassets */; };
 		4BAF918A298D32DE00D5A14D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BAF9189298D32DE00D5A14D /* Preview Assets.xcassets */; };
@@ -26,8 +25,6 @@
 		4BB3698329912FC0001A6271 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3698229912FC0001A6271 /* TextView.swift */; };
 		4BB3698629913746001A6271 /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3698529913746001A6271 /* View+Utils.swift */; };
 		4BB3698829913B20001A6271 /* AddTodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3698729913B20001A6271 /* AddTodoViewModel.swift */; };
-		4BCCDA0B2993CFAD000EA7D2 /* RealmTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCDA0A2993CFAD000EA7D2 /* RealmTodoListView.swift */; };
-		4BCCDA0D2993D141000EA7D2 /* RealmAddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCDA0C2993D141000EA7D2 /* RealmAddTodoView.swift */; };
 		4BCCDA0F2993D550000EA7D2 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCCDA0E2993D550000EA7D2 /* TodoItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +34,6 @@
 		4B1C1F9F298D5054002B53A3 /* TodoListHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListHomeView.swift; sourceTree = "<group>"; };
 		4B613A60298D9BD300F38639 /* MockTodoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTodoListRepository.swift; sourceTree = "<group>"; };
 		4B613A62298DA62200F38639 /* TodoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsView.swift; sourceTree = "<group>"; };
-		4BA928A12991CFEF000B4B78 /* RealmTodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTodoRepository.swift; sourceTree = "<group>"; };
 		4BAF917F298D32DA00D5A14D /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BAF9182298D32DA00D5A14D /* ToDoListAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListAppApp.swift; sourceTree = "<group>"; };
 		4BAF9186298D32DE00D5A14D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,8 +49,6 @@
 		4BB3698229912FC0001A6271 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		4BB3698529913746001A6271 /* View+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
 		4BB3698729913B20001A6271 /* AddTodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewModel.swift; sourceTree = "<group>"; };
-		4BCCDA0A2993CFAD000EA7D2 /* RealmTodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTodoListView.swift; sourceTree = "<group>"; };
-		4BCCDA0C2993D141000EA7D2 /* RealmAddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAddTodoView.swift; sourceTree = "<group>"; };
 		4BCCDA0E2993D550000EA7D2 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D3864DFC975EA9818667C9AB /* Pods_ToDoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,7 +137,6 @@
 			children = (
 				4BAF9199298D3F4900D5A14D /* TodoListRepository.swift */,
 				4B613A60298D9BD300F38639 /* MockTodoListRepository.swift */,
-				4BA928A12991CFEF000B4B78 /* RealmTodoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -182,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				4B1C1F9F298D5054002B53A3 /* TodoListHomeView.swift */,
-				4BCCDA0A2993CFAD000EA7D2 /* RealmTodoListView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -199,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				4BB3698029912A15001A6271 /* AddTodoView.swift */,
-				4BCCDA0C2993D141000EA7D2 /* RealmAddTodoView.swift */,
 			);
 			path = AddTodo;
 			sourceTree = "<group>";
@@ -347,7 +338,6 @@
 				4BAF919D298D3F5C00D5A14D /* TodoListRepositoryProtocol.swift in Sources */,
 				4BB3698129912A15001A6271 /* AddTodoView.swift in Sources */,
 				4BCCDA0F2993D550000EA7D2 /* TodoItem.swift in Sources */,
-				4BCCDA0D2993D141000EA7D2 /* RealmAddTodoView.swift in Sources */,
 				4BB3698329912FC0001A6271 /* TextView.swift in Sources */,
 				4BB3698629913746001A6271 /* View+Utils.swift in Sources */,
 				4BB3698829913B20001A6271 /* AddTodoViewModel.swift in Sources */,
@@ -357,11 +347,9 @@
 				4BAF91A0298D474C00D5A14D /* TodoListViewModel.swift in Sources */,
 				4BB3697D29912527001A6271 /* EmptyContentView.swift in Sources */,
 				4BAF9194298D332A00D5A14D /* TodoModel.swift in Sources */,
-				4BA928A22991CFEF000B4B78 /* RealmTodoRepository.swift in Sources */,
 				4BAF919A298D3F4900D5A14D /* TodoListRepository.swift in Sources */,
 				4BAF9196298D33A500D5A14D /* NetworkService.swift in Sources */,
 				4BAF9183298D32DA00D5A14D /* ToDoListAppApp.swift in Sources */,
-				4BCCDA0B2993CFAD000EA7D2 /* RealmTodoListView.swift in Sources */,
 				4B1C1FA0298D5054002B53A3 /* TodoListHomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

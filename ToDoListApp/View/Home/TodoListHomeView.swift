@@ -22,6 +22,8 @@ struct TodoListHomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color(UIColor.systemBackground)
+                    .ignoresSafeArea()
                 LoadingContentView(state: $viewModel.state) {
                     EmptyContentView(content: Constants.navigationTitle)
                         .opacity(viewModel.todoItems.isEmpty ? 1 : 0)
@@ -36,8 +38,8 @@ struct TodoListHomeView: View {
                                 .tint(.red)
                             }
                             .listRowSeparator(.hidden)
+                            .listRowBackground(Color(UIColor.tertiarySystemBackground))
                     }
-                    // Swipe actions doesnt work well with searchable
                     .searchable(text: $viewModel.searchableText, prompt: "Search an Todo Item")
                     .onSubmit(of: .search, {
                         self.viewModel.fetch()
@@ -48,7 +50,6 @@ struct TodoListHomeView: View {
                     .opacity(viewModel.todoItems.isEmpty ? 0 : 1)
                 }
             }
-//            .searchable(showSearch: !viewModel.todoItems.isEmpty ,text: $viewModel.searchableText, prompt: "Search an Todo Item")
             .navigationTitle(Constants.navigationTitle)
             .toolbar {
                 Button {
@@ -62,15 +63,7 @@ struct TodoListHomeView: View {
                 AddTodoView(viewModel: self.viewModel.makeAddViewModel())
             }
         }
-        .onAppear {
-            self.viewModel.fetch()
-        }
     }
-    
-    private func fetch() {
-        self.viewModel.fetch()
-    }
-    
     
     private func makeContentForItem(_ item: TodoModel) -> NavigationLink<Text, TodoDetailsView> {
         NavigationLink {
