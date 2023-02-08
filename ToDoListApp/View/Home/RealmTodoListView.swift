@@ -13,35 +13,52 @@ struct RealmTodoListHomeView: View {
     enum Constants {
         static let navigationTitle = "Todo List"
     }
-        
-    @ObservedResults(TodoModelRealm.self) var todos
-    @State var showAdd = false
+    
+    @ObservedObject var viewModel = RealmListViewModel()
     
     var body: some View {
         NavigationView {
             ZStack {
                 EmptyContentView(content: Constants.navigationTitle)
-                    .opacity(todos.isEmpty ? 1 : 0)
+                    .opacity(viewModel.todoRealmItems.isEmpty ? 1 : 0)
                 List {
-                    ForEach(todos) { todo in
+                    ForEach(viewModel.todoRealmItems) { todo in
                         makeContentForItem(todo)
                             .listRowSeparator(.hidden)
-                    }.onDelete(perform: $todos.remove)
+                            .swipeActions {
+                                Button {
+                                    self.viewModel.deleteItem(todo)
+                                } label: {
+                                    Image(systemName: "trash.fill")
+                                }
+                                .tint(.red)
+
+                            }
+                    }
                 }
-                .opacity(todos.isEmpty ? 0 : 1)
+                .opacity(viewModel.todoRealmItems.isEmpty ? 0 : 1)
                 
+            }
+            .searchable(text: self.$viewModel.searchableText,
+                        collection: self.viewModel.$todoRealmItems,
+                        keyPath: \.title,
+                        prompt: "Search an Todo Item") {
+                ForEach(self.viewModel.todoRealmItems) { itemsFiltered in
+                    Text(itemsFiltered.title).searchCompletion(itemsFiltered.title)
+                        .listRowSeparator(.hidden)
+                }
             }
             .navigationTitle(Constants.navigationTitle)
             .toolbar {
                 Button {
-                    showAdd.toggle()
+                    viewModel.showAddTodo.toggle()
                 } label: {
                     Text("+")
 
                 }
             }
-            .sheet(isPresented: $showAdd) {
-                RealmAddTodoView()
+            .sheet(isPresented: $viewModel.showAddTodo) {
+                RealmAddTodoView(viewModel: viewModel.makeAddViewModel())
             }
         }
     }

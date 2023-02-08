@@ -19,17 +19,15 @@ struct RealmAddTodoView: View {
     }
         
     @Environment(\.dismiss) var dismiss
-    @Environment(\.realm) var realm
     
-    @State var name = ""
-    @State var description = ""
+    @ObservedObject var viewModel: RealmAddTodoViewModel
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(Constants.chooseName)
-                    TextField(Constants.namePlaceholder, text: self.$name)
+                    TextField(Constants.namePlaceholder, text: self.$viewModel.todoName)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .textInputAutocapitalization(.sentences)
@@ -37,7 +35,7 @@ struct RealmAddTodoView: View {
                 .padding(.horizontal, 16)
                 VStack(alignment: .leading, spacing: 4) {
                     Text(Constants.descriptionTitle)
-                    TextView(text: self.$description, placeholder: Constants.textViewPlaceholder) {
+                    TextView(text: self.$viewModel.todoDescription, placeholder: Constants.textViewPlaceholder) {
                         $0.cornerRadius = 4
                         $0.borderColor = UIColor.systemGray5
                         $0.borderWidth = 1
@@ -54,12 +52,7 @@ struct RealmAddTodoView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button {
-                        let todo = TodoModelRealm()
-                        todo.todoDescription = self.description
-                        todo.title = self.name
-                        try? realm.write({
-                            realm.add(todo)
-                        })
+                        self.viewModel.create()
                         dismiss()
                     } label: {
                         Text(Constants.navigationTitle)
