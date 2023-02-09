@@ -25,16 +25,7 @@ struct RealmTodoListHomeView: View {
                     ForEach(viewModel.todoRealmItems) { todo in
                         makeContentForItem(todo)
                             .listRowSeparator(.hidden)
-                            .swipeActions {
-                                Button {
-                                    self.viewModel.deleteItem(todo)
-                                } label: {
-                                    Image(systemName: "trash.fill")
-                                }
-                                .tint(.red)
-
-                            }
-                    }
+                    }.onDelete(perform: self.viewModel.deleteItem(_:))
                 }
                 .opacity(viewModel.todoRealmItems.isEmpty ? 0 : 1)
                 

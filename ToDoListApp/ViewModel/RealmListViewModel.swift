@@ -22,8 +22,8 @@ class RealmListViewModel: NSObject, ObservableObject {
         super.init()
     }
         
-    func deleteItem(_ todo: TodoModelRealm) {
-        self.$todoRealmItems.remove(todo)
+    func deleteItem(_ index: IndexSet) {
+        self.$todoRealmItems.remove(atOffsets: index)
     }
     
     func addItem(item: ToSaveTodoModel) {
