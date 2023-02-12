@@ -23,7 +23,7 @@ struct RealmAddTodoView: View {
     @ObservedObject var viewModel: RealmAddTodoViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(Constants.chooseName)

@@ -27,6 +27,7 @@ class RealmListViewModel: NSObject, ObservableObject {
     }
     
     func addItem(item: ToSaveTodoModel) {
+        guard !item.description.isEmpty else { return }
         let todo = TodoModelRealm()
         todo.title = item.title
         todo.todoDescription = item.description

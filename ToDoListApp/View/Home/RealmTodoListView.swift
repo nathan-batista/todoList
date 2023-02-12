@@ -16,19 +16,29 @@ struct RealmTodoListHomeView: View {
     
     @ObservedObject var viewModel = RealmListViewModel()
     
-    var body: some View {
-        NavigationView {
-            ZStack {
-                EmptyContentView(content: Constants.navigationTitle)
-                    .opacity(viewModel.todoRealmItems.isEmpty ? 1 : 0)
-                List {
-                    ForEach(viewModel.todoRealmItems) { todo in
-                        makeContentForItem(todo)
-                            .listRowSeparator(.hidden)
-                    }.onDelete(perform: self.viewModel.deleteItem(_:))
+    var itemsList: some View {
+        List {
+            ForEach(self.viewModel.todoRealmItems) { todo in
+                NavigationLink(value: todo) {
+                    makeContentForItem(todo)
                 }
-                .opacity(viewModel.todoRealmItems.isEmpty ? 0 : 1)
-                
+                .listRowSeparator(.hidden)
+            }
+            .onDelete(perform: self.viewModel.deleteItem(_:))
+        }
+        .navigationDestination(for: TodoModelRealm.self, destination: { selectedTodo in
+            TodoDetailsView(item: selectedTodo)
+        })
+    }
+    
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                if self.viewModel.todoRealmItems.isEmpty {
+                    EmptyContentView(content: Constants.navigationTitle)
+                } else {
+                    itemsList
+                }
             }
             .searchable(text: self.$viewModel.searchableText,
                         collection: self.viewModel.$todoRealmItems,
@@ -54,12 +64,8 @@ struct RealmTodoListHomeView: View {
         }
     }
     
-    private func makeContentForItem(_ item: TodoItem) -> NavigationLink<Text, TodoDetailsView> {
-        NavigationLink {
-            TodoDetailsView(item: item)
-        } label: {
+    private func makeContentForItem(_ item: TodoItem) -> Text {
             Text(item.title)
-        }
     }
 }
 
